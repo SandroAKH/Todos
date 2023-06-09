@@ -1,14 +1,14 @@
-import React, { useState, useEffect, createContext, useContext } from 'react';
+import React, { useState, useEffect, createContext } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-interface Todo {
+interface Todos {
     id: string;
     text: string;
     completed: boolean;
 }
 
 interface TodoContextProps {
-    todos: Todo[];
+    todos: Todos[];
     addTodo: (text: string) => void;
     toggleTodoCompletion: (id: string) => void;
     removeTodo: (id: string) => void;
@@ -22,28 +22,25 @@ interface TodoContextProps {
     setInputValue: (value: string) => void;
 }
 
-const TodoContext = createContext<any>({});
+export const TodoContext = createContext<TodoContextProps>({});
 
 
 const TodoProvider = ({ children }) => {
-    const [todos, setTodos] = useState<Todo[]>([]);
+    const [todos, setTodos] = useState<Todos[]>(() => {
+        const storedTodos = localStorage.getItem('todos');
+        return storedTodos ? JSON.parse(storedTodos) : [];
+    });
     const [inputValue, setInputValue] = useState('');
     const [filter, setFilter] = useState('all');
-
-    useEffect(() => {
-        const storedTodos = localStorage.getItem('todos');
-        if (storedTodos) {
-            setTodos(JSON.parse(storedTodos));
-        }
-    }, []);
 
     useEffect(() => {
         localStorage.setItem('todos', JSON.stringify(todos));
     }, [todos]);
 
+
     const addTodo = (text: string) => {
         if (text.trim() !== '') {
-            const newTodo: Todo = {
+            const newTodo: Todos = {
                 id: uuidv4(),
                 text: text,
                 completed: false,
@@ -101,9 +98,5 @@ const TodoProvider = ({ children }) => {
     );
 };
 
-const useTodoContext = (): TodoContextProps => {
-    return useContext(TodoContext);
-};
 
-export { TodoProvider, useTodoContext };
-export default TodoContext;
+export default TodoProvider;
