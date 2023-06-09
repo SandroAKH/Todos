@@ -1,38 +1,137 @@
-.App {
+.todo{
+  margin: 100px;
+  padding: 10px;
+
+}
+.todo-container{
+  background-color: white;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+h1{
   text-align: center;
+  margin: 0;
+  color: papayawhip;
+  font-weight: 300;
+  font-size: 60px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+input{
+  height: 50px;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid lightgray;
+  margin: 0;
+  padding: 0;
+  width: -webkit-fill-available;
+  color: gray;
+  padding-left: 10px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 20px;
+}
+input::placeholder {
+  font-style: italic;
+  padding-left: 10px;
+  opacity: 0.4;
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+ul{
+  margin: 0;
+  padding-left: 0;
+  min-height: 40px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+ul li {
+  padding-left: 50px;
+  list-style-type: none;
+  line-height: 50px;
+  height: 50px;
+  border-bottom: 1px solid lightgray;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: space-between;
+}
+li span{
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color:gray;
+  cursor: pointer;
+}
+li div{
+  padding-left: 0;
+  justify-content: space-between;
+  margin-left: -40px;
+  display: flex;
+}
+.completed-mark{
+  background: transparent;
+  width: 30px; 
+  height: 30px;
+  border-radius: 50%;
+  display: flex; 
+  align-items: center; 
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  border: 1px solid lightgray;
+  margin-top: 10px;
+  margin-right: 20px;
+  color: green;
+  content: ''
+}
+.check::after{
+  content: '✔'
 }
 
-.App-link {
-  color: #61dafb;
+.empty{
+  padding: 10px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color:gray;
+  font-style: italic;
+  border-bottom: 1px solid lightgray;
+  margin: 0;
+}
+.completed-actions{
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+}
+.remove-btn{
+  border: none;
+  background: transparent;
+  color: rgb(248, 152, 152);
+  margin: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+.completed-actions button{
+  background: transparent;
+  outline: none;
+  border: none;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color:gray;
+  cursor: pointer;
+  padding: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.filter-actions{
+  display: flex;
+  height: 30px;
+  line-height: 30px;
+}
+.filter-actions button{
+  background: transparent;
+  outline: none;
+  border: 1px solid lightgray;
+  margin: 10px;
+  height: 100%;
+  color:gray;
+  cursor: pointer;
+}
+.filter-actions  button:hover{
+  background: rgb(206, 205, 205);
+  color:white;
+  transition: 0.3s ease-in-out;
+}
+.footer-container{
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color:gray;
 }
