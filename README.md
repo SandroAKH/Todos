@@ -16,6 +16,8 @@ Todo app built using React and TypeScript. It allows users to add, complete, del
 
 ### Filter todos to show only active tasks, completed tasks, or all tasks.
 
+### save and retrieve data from localStorage
+
 ## Usage
 
 ### Clone the repository and navigate to the project directory.
